@@ -19,7 +19,7 @@ function App() {
               <Candidates />
             </Route>
             <Route path="/">
-              <div>tttest</div>
+              <div><h2>Home Page</h2></div>
             </Route>
           </Switch>
         </Container>
