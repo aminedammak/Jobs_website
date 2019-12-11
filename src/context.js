@@ -14,11 +14,16 @@ class ContextProvider extends Component {
         return this.state.companies.find(item => item.id === id);
     }
 
+    getJob = (id) => {
+        return this.state.jobs.find(item => item.id === id);
+    }
+
     render() {
         return (
             <Context.Provider value={{
                 ...this.state,
-                getCompany: this.getCompany
+                getCompany: this.getCompany,
+                getJob: this.getJob
             }}>
                 {this.props.children}
             </Context.Provider>

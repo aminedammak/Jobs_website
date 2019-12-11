@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import JobsList from './components/JobsList';
+import JobDetails from './components/JobDetails';
 import Candidates from './components/Candidates';
 import { Container } from 'react-bootstrap';
 
@@ -12,8 +13,11 @@ function App() {
         <Header />
         <Container>
           <Switch>
-            <Route path="/jobs">
+            <Route exact path="/jobs">
               <JobsList />
+            </Route>
+            <Route path="/jobs/:id">
+              <JobDetails />
             </Route>
             <Route path="/candidates">
               <Candidates />

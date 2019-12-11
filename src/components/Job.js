@@ -18,9 +18,11 @@ export default function Job({ job }) {
                                     <h4>{job.title}</h4>
                                     <span>{company.name}</span>
                                     <span>{job.region}</span>
-                                    <div className="average-salary">
-                                        <span>{job.minSalary}</span>-<span>{job.maxSalary}</span>
-                                    </div>
+                                    {(job.minSalary && job.maxSalary) &&
+                                        <div className="average-salary">
+                                            <span>{job.minSalary}</span>-<span>{job.maxSalary}</span>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                             <div className="job-right">
