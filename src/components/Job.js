@@ -30,7 +30,7 @@ export default function Job({ job }) {
                     </div>
                 </div>
                 <div className="job-right">
-                    <Tag >{job.type}</Tag>
+                    <Tag className="tag">{job.type}</Tag>
                 </div>
             </JobWrapper>
 
@@ -102,9 +102,16 @@ const JobWrapper = styled.a`
             margin-left: 13px
         }
     }
+    .tag  {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 `
 
-const Tag = styled.span`
+export const Tag = styled.span`
     border-radius: 3px;
     font-size: 12px;
     background-color: #fff;
@@ -113,14 +120,10 @@ const Tag = styled.span`
     padding: 4px 8px;
     line-height: 18px;
     font-weight: 500;
-    position: absolute;
-    top: 25px;
-    right: 25px;
     white-space: nowrap;
     text-align: center;
     min-width: 76px;
-    top: 50%;
-    transform: translateY(-50%);
     border: 1px solid #e12335;
     background-color: rgba( 225,35,53,0.07);
+    margin-left: 10px;
 `

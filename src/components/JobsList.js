@@ -19,13 +19,10 @@ export default function JobsList() {
         )
     }
 
-
-
     return (
         <div>
             <h2>Browse list of Jobs </h2>
             {renderResult()}
         </div>
     )
-
 }
