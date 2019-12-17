@@ -10,8 +10,9 @@ export default function Job({ job }) {
                 {value => {
                     const { companies, getCompany } = value;
                     const company = getCompany(job.companyId);
+                    const linkurl = `/jobs/${job.id}`;
                     return (
-                        <JobWrapper href="#">
+                        <JobWrapper href={linkurl} >
                             <div className="job-left">
                                 <img src={company.logo} alt={company.name} />
                                 <div className="job-middle">
