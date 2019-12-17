@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ContextProvider } from "./context";
+import { JobContextProvider } from "./contexts/JobContext";
 
 ReactDOM.render(
-    <ContextProvider>
+    <JobContextProvider>
         <App />
-    </ContextProvider>, document.getElementById('root'));
+    </JobContextProvider>, document.getElementById('root'));

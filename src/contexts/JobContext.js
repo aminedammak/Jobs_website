@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { jobs, companies } from './data';
+import React, { Component, useContext } from 'react';
+import { jobs, companies } from '../data';
 
-const Context = React.createContext();
+export const JobContext = React.createContext();
 
-class ContextProvider extends Component {
+class JobContextProvider extends Component {
 
     state = {
         jobs: jobs,
@@ -20,17 +20,15 @@ class ContextProvider extends Component {
 
     render() {
         return (
-            <Context.Provider value={{
+            <JobContext.Provider value={{
                 ...this.state,
                 getCompany: this.getCompany,
                 getJob: this.getJob
             }}>
                 {this.props.children}
-            </Context.Provider>
+            </JobContext.Provider>
         )
     }
 }
 
-const ContextConsumer = Context.Consumer;
-
-export { ContextProvider, ContextConsumer };
+export { JobContextProvider };

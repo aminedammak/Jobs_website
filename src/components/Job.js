@@ -1,38 +1,39 @@
-import React from 'react';
-import { ContextConsumer } from '../context';
+import React, { useContext } from 'react';
+import { JobContext } from '../contexts/JobContext';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export default function Job({ job }) {
+
+    const context = useContext(JobContext);
+
+    const { companies, getCompany } = context;
+    const company = getCompany(job.companyId);
+    const linkurl = `/jobs/${job.id}`;
+
     return (
         <div>
-            <ContextConsumer>
-                {value => {
-                    const { companies, getCompany } = value;
-                    const company = getCompany(job.companyId);
-                    const linkurl = `/jobs/${job.id}`;
-                    return (
-                        <JobWrapper href={linkurl} >
-                            <div className="job-left">
-                                <img src={company.logo} alt={company.name} />
-                                <div className="job-middle">
-                                    <h4>{job.title}</h4>
-                                    <span>{company.name}</span>
-                                    <span>{job.region}</span>
-                                    {(job.minSalary && job.maxSalary) &&
-                                        <div className="average-salary">
-                                            <span>{job.minSalary}</span>-<span>{job.maxSalary}</span>
-                                        </div>
-                                    }
-                                </div>
+
+
+            <JobWrapper href={linkurl} >
+                <div className="job-left">
+                    <img src={company.logo} alt={company.name} />
+                    <div className="job-middle">
+                        <h4>{job.title}</h4>
+                        <span>{company.name}</span>
+                        <span>{job.region}</span>
+                        {(job.minSalary && job.maxSalary) &&
+                            <div className="average-salary">
+                                <span>{job.minSalary}</span>-<span>{job.maxSalary}</span>
                             </div>
-                            <div className="job-right">
-                                <Tag >{job.type}</Tag>
-                            </div>
-                        </JobWrapper>
-                    );
-                }}
-            </ContextConsumer>
+                        }
+                    </div>
+                </div>
+                <div className="job-right">
+                    <Tag >{job.type}</Tag>
+                </div>
+            </JobWrapper>
+
 
         </div>
     )
