@@ -10,7 +10,7 @@ export default function PostAJob() {
     const [location, setLocation] = useState('');
     const [region, setRegion] = useState('');
     const [type, setType] = useState('Full time');
-    const [category, setCategory] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [tags, setTags] = useState([]);
     const [description, setDescription] = useState("");
     const [applicationEmail, setApplicationEmail] = useState("");
@@ -24,7 +24,7 @@ export default function PostAJob() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const job = { id: uuid(), title, location, region, type, category, tags, description, applicationEmail, minRate, maxRate, minSalary, maxSalary, companyId };
+        const job = { id: uuid(), title, location, region, type, categories, tags, description, applicationEmail, minRate, maxRate, minSalary, maxSalary, companyId };
         postJob(job);
         setTitle("");
     }
@@ -37,7 +37,7 @@ export default function PostAJob() {
                 value.push(options[i].value);
             }
         }
-        setCategory(value);
+        setCategories(value);
     }
 
     return (
@@ -63,16 +63,15 @@ export default function PostAJob() {
                     <input type="text" value={type} onChange={(e) => setType(e.target.value)} />
                 </div>
                 <div class="form-group">
-                    <label>Category</label>
-
-                    <select value={category} onChange={(e) => handleMultiSelectChange(e)} multiple class="form-control" id="exampleFormControlSelect2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                    <label>Categories</label>
+                    <select value={categories} onChange={(e) => handleMultiSelectChange(e)} multiple class="form-control" id="exampleFormControlSelect2">
+                        <option>Design</option>
+                        <option>Fullstack</option>
+                        <option>Frontend</option>
+                        <option>Backend</option>
+                        <option>System</option>
+                        <option>Test</option>
                     </select>
-
                 </div>
 
                 <Button variant="primary" type="submit">Post</Button>

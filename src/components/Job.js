@@ -27,7 +27,7 @@ export default function Job({ job }) {
                             <div className="average-salary">
                                 <span>{job.minSalary}</span>-<span>{job.maxSalary}</span>
                             </div>
-                            {job.category && job.category.length > 0 && job.category.map((cat) => {
+                            {job.categories && job.categories.length > 0 && job.categories.map((cat) => {
                                 return (<Tag key={uuid()}>{cat}</Tag>);
                             })}
                         </div>
@@ -51,7 +51,7 @@ Job.propTypes = {
         location: PropTypes.string,
         region: PropTypes.string,
         type: PropTypes.string,
-        category: PropTypes.array,
+        categories: PropTypes.array,
         tags: PropTypes.array,
         description: PropTypes.string,
         applicationEmail: PropTypes.string,
