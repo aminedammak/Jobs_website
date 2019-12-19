@@ -21,3 +21,29 @@ export const JobDetailsElement = styled.div`
         }
     }
 `
+
+export const Form = styled.form`
+    .fake-input, input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="tel"], input[type="phone"], input[type="url"], textarea, select {
+        padding: 14px 18px;
+        outline: none;
+        font-size: 15px;
+        color: #909090;
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+        background-color: #fcfcfc;
+        font-weight: 500;
+        border: 1px solid #e0e0e0;
+        opacity: 1;
+        border-radius: 3px;
+    }
+    label {
+        margin-bottom: 9px;
+        font-size: 16px;
+        line-height: 28px;
+        color: #333;
+        font-weight: 500;
+    }
+`

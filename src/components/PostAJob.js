@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { JobContext } from '../contexts/JobContext';
 import uuid from 'uuid';
+import { Form } from "./style";
+import { Button } from 'react-bootstrap';
 
 export default function PostAJob() {
 
@@ -29,19 +31,34 @@ export default function PostAJob() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label>Title</label>
-                <input value={title} onChange={(e) => setTitle(e.target.value)} />
-                <label>Location</label>
-                <input value={location} onChange={(e) => setLocation(e.target.value)} />
-                <label>Region</label>
-                <input value={region} onChange={(e) => setRegion(e.target.value)} />
-                <label>Type</label>
-                <input value={type} onChange={(e) => setType(e.target.value)} />
-                {/* <label>Category</label>
-                <input value={category} onChange={(e) => setCategory(e.target.value)} /> */}
-                <button type="submit">Post</button>
-            </form>
+            <div class="alert alert-primary" role="alert">
+                You are currently signed in as ... <a class="btn btn-primary" href="#" role="button">Sign out</a>
+            </div>
+            <Form onSubmit={handleSubmit}>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+                </div>
+                <div class="form-group">
+                    <label>Region</label>
+                    <input type="text" value={region} onChange={(e) => setRegion(e.target.value)} />
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <input type="text" value={type} onChange={(e) => setType(e.target.value)} />
+                </div>
+                <div class="form-group">
+                    {/* <label>Category</label>
+                    <input value={category} onChange={(e) => setCategory(e.target.value)} /> */}
+                </div>
+
+                <Button variant="primary" type="submit">Post</Button>
+
+            </Form>
         </div>
     )
 }

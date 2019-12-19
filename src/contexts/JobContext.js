@@ -28,7 +28,8 @@ class JobContextProvider extends Component {
 
     componentDidMount() {
         const jobsLocalStorage = JSON.parse(localStorage.getItem("jobs"));
-        this.setState({ jobs: jobsLocalStorage });
+        const jobsStore = (jobsLocalStorage) ? jobsLocalStorage : jobs;
+        this.setState({ jobs: jobsStore });
     }
 
     componentDidUpdate() {
