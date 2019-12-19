@@ -1,6 +1,6 @@
 const jobs = [
     {
-        id: 1,
+        id: "1",
         title: "web developer",
         location: "France",
         region: "Paris",
@@ -13,10 +13,10 @@ const jobs = [
         maxRate: "100$",
         minSalary: "20000$",
         maxSalary: "50000$",
-        companyId: 1
+        companyId: "1"
     },
     {
-        id: 2,
+        id: "2",
         title: "fullstack developer",
         location: "France",
         region: "Lyon",
@@ -29,26 +29,28 @@ const jobs = [
         maxRate: "120$",
         minSalary: "25000$",
         maxSalary: "60000$",
-        companyId: 2
+        companyId: "2"
     }
 ];
 
 const companies = [
     {
-        id: 1,
+        id: "1",
         name: "graph",
         website: "www.graph.com",
         tagline: "International web agency that creates scalables websites",
         twitterUsername: "@graph",
-        logo: "companies/logos/travelsea.png"
+        logo: "companies/logos/travelsea.png",
+        email: "contac@graph.com"
     },
     {
-        id: 2,
+        id: "2",
         name: "bbva",
         website: "www.bbva.com",
         tagline: "Compass Bank dba BBVA Compass",
         twitterUsername: "@bbva",
-        logo: "companies/logos/bbva.jpg"
+        logo: "companies/logos/bbva.jpg",
+        email: "contac@bbva.com"
     }
 ]
 

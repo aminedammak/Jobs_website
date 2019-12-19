@@ -16,7 +16,7 @@ export default function Navigation() {
                     </NavDropdown>
                     <NavDropdown title="For employers" id="basic-nav-dropdown-2">
                         <NavDropdown.Item as="span"><Link to="/candidates">Browse candidates</Link></NavDropdown.Item>
-                        <NavDropdown.Item as="span">Post a job</NavDropdown.Item>
+                        <NavDropdown.Item as="span"><Link to="/post-a-job">Post a job</Link></NavDropdown.Item>
                         <NavDropdown.Item as="span">Employer dashboard</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>

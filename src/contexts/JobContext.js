@@ -18,12 +18,17 @@ class JobContextProvider extends Component {
         return this.state.jobs.find(item => item.id === id);
     }
 
+    postJob = (job) => {
+        this.setState({ jobs: [...this.state.jobs, job] });
+    }
+
     render() {
         return (
             <JobContext.Provider value={{
                 ...this.state,
                 getCompany: this.getCompany,
-                getJob: this.getJob
+                getJob: this.getJob,
+                postJob: this.postJob
             }}>
                 {this.props.children}
             </JobContext.Provider>

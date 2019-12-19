@@ -17,17 +17,21 @@ export default function Job({ job }) {
 
             <JobWrapper href={linkurl} >
                 <div className="job-left">
-                    <img src={company.logo} alt={company.name} />
-                    <div className="job-middle">
-                        <h4>{job.title}</h4>
-                        <span>{company.name}</span>
-                        <span>{job.region}</span>
-                        {(job.minSalary && job.maxSalary) &&
+                    <React.Fragment>
+                        <img src={company.logo} alt={company.name} />
+
+                        <div className="job-middle">
+                            <h4>{job.title}</h4>
+                            <span> company.name  </span>
+                            <span>{job.region}</span>
+
                             <div className="average-salary">
                                 <span>{job.minSalary}</span>-<span>{job.maxSalary}</span>
                             </div>
-                        }
-                    </div>
+
+                        </div>
+                    </React.Fragment>
+
                 </div>
                 <div className="job-right">
                     <Tag className="tag">{job.type}</Tag>
@@ -41,7 +45,7 @@ export default function Job({ job }) {
 
 Job.propTypes = {
     job: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         title: PropTypes.string,
         location: PropTypes.string,
         region: PropTypes.string,
@@ -54,7 +58,7 @@ Job.propTypes = {
         maxRate: PropTypes.string,
         minSalary: PropTypes.string,
         maxSalary: PropTypes.string,
-        companyId: PropTypes.number
+        companyId: PropTypes.string
     })
 }
 
