@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { JobContext } from '../contexts/JobContext';
 import uuid from 'uuid';
 
@@ -7,7 +7,7 @@ export default function PostAJob() {
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
     const [region, setRegion] = useState('');
-    const [type, setType] = useState('');
+    const [type, setType] = useState('Full time');
     const [category, setCategory] = useState([]);
     const [tags, setTags] = useState([]);
     const [description, setDescription] = useState("");
@@ -18,7 +18,7 @@ export default function PostAJob() {
     const [maxSalary, setMaxSalary] = useState("");
     const [companyId, setCompanyId] = useState("1");
 
-    const { postJob } = useContext(JobContext);
+    const { postJob, jobs } = useContext(JobContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
