@@ -13,8 +13,6 @@ export default function Job({ job }) {
 
     return (
         <div>
-
-
             <JobWrapper href={linkurl} >
                 <div className="job-left">
                     <React.Fragment>

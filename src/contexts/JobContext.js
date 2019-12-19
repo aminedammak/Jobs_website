@@ -5,10 +5,14 @@ export const JobContext = React.createContext();
 
 class JobContextProvider extends Component {
 
-    state = {
-        jobs: jobs,
-        companies: companies
+    constructor(props) {
+        super(props);
+        this.state = {
+            jobs: jobs,
+            companies: companies
+        }
     }
+
 
     getCompany = (id) => {
         return this.state.companies.find(item => item.id === id);
@@ -23,11 +27,13 @@ class JobContextProvider extends Component {
     }
 
     componentDidMount() {
-        localStorage.setItem("jobs", JSON.stringify(jobs));
         const jobsLocalStorage = JSON.parse(localStorage.getItem("jobs"));
-        console.log(jobsLocalStorage);
-
         this.setState({ jobs: jobsLocalStorage });
+    }
+
+    componentDidUpdate() {
+        console.log(this.state.jobs);
+        localStorage.setItem("jobs", JSON.stringify(this.state.jobs));
     }
 
     render() {
