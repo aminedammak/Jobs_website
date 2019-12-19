@@ -29,10 +29,21 @@ export default function PostAJob() {
         setTitle("");
     }
 
+    const handleMultiSelectChange = function (e) {
+        var options = e.target.options;
+        var value = [];
+        for (var i = 0, l = options.length; i < l; i++) {
+            if (options[i].selected) {
+                value.push(options[i].value);
+            }
+        }
+        setCategory(value);
+    }
+
     return (
         <div>
             <div class="alert alert-primary" role="alert">
-                You are currently signed in as ... <a class="btn btn-primary" href="#" role="button">Sign out</a>
+                You are currently signed in as ... <a className="btn btn-primary" href="#" role="button">Sign out</a>
             </div>
             <Form onSubmit={handleSubmit}>
                 <div class="form-group">
@@ -52,8 +63,16 @@ export default function PostAJob() {
                     <input type="text" value={type} onChange={(e) => setType(e.target.value)} />
                 </div>
                 <div class="form-group">
-                    {/* <label>Category</label>
-                    <input value={category} onChange={(e) => setCategory(e.target.value)} /> */}
+                    <label>Category</label>
+
+                    <select value={category} onChange={(e) => handleMultiSelectChange(e)} multiple class="form-control" id="exampleFormControlSelect2">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
                 </div>
 
                 <Button variant="primary" type="submit">Post</Button>

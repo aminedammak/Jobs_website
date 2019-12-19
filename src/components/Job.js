@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { JobContext } from '../contexts/JobContext';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import uuid from 'uuid';
 
 export default function Job({ job }) {
 
@@ -20,13 +21,15 @@ export default function Job({ job }) {
 
                         <div className="job-middle">
                             <h4>{job.title}</h4>
-                            <span> company.name  </span>
-                            <span>{job.region}</span>
 
+                            <span> {company.name}  </span>
+                            <span>{job.region}</span>
                             <div className="average-salary">
                                 <span>{job.minSalary}</span>-<span>{job.maxSalary}</span>
                             </div>
-
+                            {job.category && job.category.length > 0 && job.category.map((cat) => {
+                                return (<Tag key={uuid()}>{cat}</Tag>);
+                            })}
                         </div>
                     </React.Fragment>
 
