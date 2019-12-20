@@ -8,12 +8,16 @@ export default function Job({ job }) {
 
     const context = useContext(JobContext);
 
-    const { companies, getCompany } = context;
+    const { companies, getCompany, deleteJob } = context;
     const company = getCompany(job.companyId);
     const linkurl = `/jobs/${job.id}`;
 
+    const handleDelete = (id) => {
+        deleteJob(id);
+    }
+
     return (
-        <div>
+        <div className="job-list-item">
             <JobWrapper href={linkurl} >
                 <div className="job-left">
                     <React.Fragment>
@@ -37,8 +41,11 @@ export default function Job({ job }) {
                 <div className="job-right">
                     <Tag className="tag">{job.type}</Tag>
                 </div>
-            </JobWrapper>
 
+            </JobWrapper>
+            <div className="actions">
+                <div onClick={() => handleDelete(job.id)}>Delete</div>
+            </div>
 
         </div>
     )

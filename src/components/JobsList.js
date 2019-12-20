@@ -7,7 +7,6 @@ export default function JobsList() {
 
     const renderResult = () => {
         const { jobs } = context;
-        console.log(jobs);
 
         if (jobs.length === 0) {
             return (<h3>There is no job offers</h3>)
