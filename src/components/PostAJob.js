@@ -29,7 +29,7 @@ export default function PostAJob() {
         setTitle("");
     }
 
-    const handleMultiSelectChange = function (e) {
+    const handleCategoriesSelect = function (e) {
         var options = e.target.options;
         var value = [];
         for (var i = 0, l = options.length; i < l; i++) {
@@ -39,6 +39,18 @@ export default function PostAJob() {
         }
         setCategories(value);
     }
+
+    const handleTagsSelect = function (e) {
+        var options = e.target.options;
+        var value = [];
+        for (var i = 0, l = options.length; i < l; i++) {
+            if (options[i].selected) {
+                value.push(options[i].value);
+            }
+        }
+        setTags(value);
+    }
+
 
     return (
         <div>
@@ -64,7 +76,7 @@ export default function PostAJob() {
                 </div>
                 <div class="form-group">
                     <label>Categories</label>
-                    <select value={categories} onChange={(e) => handleMultiSelectChange(e)} multiple class="form-control">
+                    <select value={categories} onChange={(e) => handleCategoriesSelect(e)} multiple class="form-control">
                         <option>Design</option>
                         <option>Fullstack</option>
                         <option>Frontend</option>
@@ -75,7 +87,7 @@ export default function PostAJob() {
                 </div>
                 <div class="form-group">
                     <label>Tags</label>
-                    <select value={tags} onChange={(e) => handleMultiSelectChange(e)} multiple class="form-control">
+                    <select value={tags} onChange={(e) => handleTagsSelect(e)} multiple class="form-control">
                         <option>php</option>
                         <option>node.js</option>
                         <option>reactjs</option>
