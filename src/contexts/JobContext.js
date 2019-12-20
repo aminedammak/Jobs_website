@@ -7,8 +7,13 @@ class JobContextProvider extends Component {
 
     constructor(props) {
         super(props);
+
+        const jobsLocalStorage = JSON.parse(localStorage.getItem("jobs"));
+        console.log("localstorage", jobsLocalStorage);
+        const jobsStore = (jobsLocalStorage) ? jobsLocalStorage : jobs;
+
         this.state = {
-            jobs: jobs,
+            jobs: jobsStore,
             companies: companies
         }
     }
@@ -26,18 +31,13 @@ class JobContextProvider extends Component {
         this.setState({ jobs: [...this.state.jobs, job] });
     }
 
-    componentDidMount() {
-        const jobsLocalStorage = JSON.parse(localStorage.getItem("jobs"));
-        const jobsStore = (jobsLocalStorage) ? jobsLocalStorage : jobs;
-        this.setState({ jobs: jobsStore });
-    }
-
     componentDidUpdate() {
-        console.log(this.state.jobs);
         localStorage.setItem("jobs", JSON.stringify(this.state.jobs));
+
     }
 
     render() {
+        console.log("return", this.state.jobs);
         return (
             <JobContext.Provider value={{
                 ...this.state,

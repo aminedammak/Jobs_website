@@ -64,7 +64,7 @@ export default function PostAJob() {
                 </div>
                 <div class="form-group">
                     <label>Categories</label>
-                    <select value={categories} onChange={(e) => handleMultiSelectChange(e)} multiple class="form-control" id="exampleFormControlSelect2">
+                    <select value={categories} onChange={(e) => handleMultiSelectChange(e)} multiple class="form-control">
                         <option>Design</option>
                         <option>Fullstack</option>
                         <option>Frontend</option>
@@ -73,9 +73,19 @@ export default function PostAJob() {
                         <option>Test</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label>Tags</label>
+                    <select value={tags} onChange={(e) => handleMultiSelectChange(e)} multiple class="form-control">
+                        <option>php</option>
+                        <option>node.js</option>
+                        <option>reactjs</option>
+                        <option>Java</option>
+                        <option>C++</option>
+                        <option>Photoshop</option>
+                    </select>
+                </div>
 
                 <Button variant="primary" type="submit">Post</Button>
-
             </Form>
         </div>
     )
