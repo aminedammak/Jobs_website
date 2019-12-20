@@ -6,12 +6,11 @@ import { Tag } from './Job';
 import { JobDetailsElement } from './style';
 import uuid from 'uuid';
 
-export default function JobDetails() {
+export default function JobDetails(props) {
     let { id } = useParams();
 
     const context = useContext(JobContext);
     const { jobs, getJob, getCompany } = context;
-    console.log("object", jobs)
     const job = getJob(id);
     const company = getCompany(job.companyId);
     const srclogo = `${window.location.origin}/${company.logo}`;
@@ -21,9 +20,7 @@ export default function JobDetails() {
             <TileBar >
                 <h2>{job.title}<Tag className="tag">{job.type}</Tag></h2>
             </TileBar>
-            <h4>Tags:</h4>{job.tags && job.tags.length > 0 && job.tags.map((tag) => {
-                return (<span key={uuid()}>{tag}</span>);
-            })}
+
             {
                 job.tags.map((tag) => {
                     return (<span key={uuid()} className="badge badge-secondary m-1">{tag}</span>);

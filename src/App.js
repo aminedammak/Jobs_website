@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from "./components/Header/Header";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import JobsList from './components/JobsList';
 import JobDetails from './components/JobDetails';
 import Candidates from './components/Candidates';
@@ -17,6 +17,7 @@ function App() {
             <Route exact path="/jobs">
               <JobsList />
             </Route>
+            <Redirect from="/test" to="jobs" />
             <Route path="/jobs/:id">
               <JobDetails />
             </Route>

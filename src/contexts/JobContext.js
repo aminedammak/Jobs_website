@@ -9,7 +9,6 @@ class JobContextProvider extends Component {
         super(props);
 
         const jobsLocalStorage = JSON.parse(localStorage.getItem("jobs"));
-        console.log("localstorage", jobsLocalStorage);
         const jobsStore = (jobsLocalStorage) ? jobsLocalStorage : jobs;
 
         this.state = {
@@ -37,7 +36,8 @@ class JobContextProvider extends Component {
     }
 
     render() {
-        console.log("return", this.state.jobs);
+        console.log(this.props.history);
+
         return (
             <JobContext.Provider value={{
                 ...this.state,
