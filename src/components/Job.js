@@ -49,8 +49,8 @@ export default function Job({ job }) {
                 </div>
             </JobWrapper>
             <div className="actions">
-                <div onClick={() => handleDelete(job.id)}><Delete /></div>
-                <Link to="/post-a-job/:id"><Edit /></Link>
+                <span onClick={() => handleDelete(job.id)}><Delete /></span>
+                <Link to={"/post-a-job/" + job.id}><Edit /></Link>
             </div>
 
         </div>
