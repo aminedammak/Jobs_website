@@ -3,6 +3,10 @@ import { JobContext } from '../contexts/JobContext';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'uuid';
+import Delete from './Icons/Delete';
+import Edit from './Icons/Edit';
+import { Link } from 'react-router-dom';
+
 
 export default function Job({ job }) {
 
@@ -15,6 +19,8 @@ export default function Job({ job }) {
     const handleDelete = (id) => {
         deleteJob(id);
     }
+
+
 
     return (
         <div className="job-list-item">
@@ -41,10 +47,10 @@ export default function Job({ job }) {
                 <div className="job-right">
                     <Tag className="tag">{job.type}</Tag>
                 </div>
-
             </JobWrapper>
             <div className="actions">
-                <div onClick={() => handleDelete(job.id)}>Delete</div>
+                <div onClick={() => handleDelete(job.id)}><Delete /></div>
+                <Link to="/post-a-job/:id"><Edit /></Link>
             </div>
 
         </div>

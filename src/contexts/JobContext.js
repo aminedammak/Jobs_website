@@ -9,9 +9,7 @@ class JobContextProvider extends Component {
         super(props);
 
         const jobsLocalStorage = JSON.parse(localStorage.getItem("jobs"));
-        console.log("jobsLocalStorage", jobsLocalStorage);
         const jobsStore = (jobsLocalStorage && jobsLocalStorage.length > 0) ? jobsLocalStorage : jobs;
-        console.log("jobsStore", jobsStore)
         this.state = {
             jobs: jobsStore,
             companies: companies
@@ -31,6 +29,16 @@ class JobContextProvider extends Component {
         this.setState({ jobs: [...this.state.jobs, job] });
     }
 
+    editJob = (id, job) => {
+        let jobToEdit = this.getJob(id);
+        let jobToEditIndex = this.state.jobs.indexOf(jobToEdit);
+        let jobList = [...this.state.jobs];
+        jobList[jobToEditIndex] = job;
+        this.setState({
+            jobs: jobList
+        });
+    }
+
     deleteJob = (id) => {
         const newJobsList = this.state.jobs.filter((job) => {
             return job.id !== id;
@@ -44,15 +52,14 @@ class JobContextProvider extends Component {
     }
 
     render() {
-        console.log(this.props.history);
-
         return (
             <JobContext.Provider value={{
                 ...this.state,
                 getCompany: this.getCompany,
                 getJob: this.getJob,
                 postJob: this.postJob,
-                deleteJob: this.deleteJob
+                deleteJob: this.deleteJob,
+                editJob: this.editJob
             }}>
                 {this.props.children}
             </JobContext.Provider>

@@ -3,42 +3,48 @@ import { JobContext } from '../contexts/JobContext';
 import uuid from 'uuid';
 import { Form } from "./style";
 import { Button } from 'react-bootstrap';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 export default function PostAJob(props) {
 
-    const [newId, setNewId] = useState('');
-    const [title, setTitle] = useState('');
-    const [location, setLocation] = useState('');
-    const [region, setRegion] = useState('');
-    const [type, setType] = useState('Full time');
+    const { postJob, jobs, getJob, editJob } = useContext(JobContext);
+
+    let { id } = useParams();
+    const editId = id;
+    const jobToEdit = getJob(editId);
+
+    const [newId, setNewId] = useState(jobToEdit ? jobToEdit.id : '');
+    const [title, setTitle] = useState(jobToEdit ? jobToEdit.title : '');
+    const [location, setLocation] = useState(jobToEdit ? jobToEdit.location : '');
+    const [region, setRegion] = useState(jobToEdit ? jobToEdit.region : '');
+    const [type, setType] = useState(jobToEdit ? jobToEdit.type : 'Full time');
     const [categories, setCategories] = useState([]);
     const [tags, setTags] = useState([]);
-    const [description, setDescription] = useState("");
-    const [applicationEmail, setApplicationEmail] = useState("");
-    const [minRate, setMinRatel] = useState("");
-    const [maxRate, setMaxRate] = useState("");
-    const [minSalary, setMinSalary] = useState("");
-    const [maxSalary, setMaxSalary] = useState("");
+    const [description, setDescription] = useState(jobToEdit ? jobToEdit.description : '');
+    const [applicationEmail, setApplicationEmail] = useState(jobToEdit ? jobToEdit.applicationEmail : '');
+    const [minRate, setMinRatel] = useState(jobToEdit ? jobToEdit.minRate : '');
+    const [maxRate, setMaxRate] = useState(jobToEdit ? jobToEdit.maxRate : '');
+    const [minSalary, setMinSalary] = useState(jobToEdit ? jobToEdit.minSalary : '');
+    const [maxSalary, setMaxSalary] = useState(jobToEdit ? jobToEdit.maxSalary : '');
     const [companyId, setCompanyId] = useState("1");
     const [validSubmittedJob, setValidSubmittedJob] = useState(false);
     const [redirectTo, setRedirectTo] = useState("");
 
 
-    const { postJob, jobs } = useContext(JobContext);
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        const id = uuid();
+        const id = jobToEdit ? jobToEdit.id : uuid;
         setNewId(id);
-        console.log("setNewId", id);
         const job = { id: id, title, location, region, type, categories, tags, description, applicationEmail, minRate, maxRate, minSalary, maxSalary, companyId };
-        postJob(job);
+        if (jobToEdit) {
+            editJob(id, job);
+        } else {
+            postJob(job);
+        }
+
         setTitle("");
         setValidSubmittedJob(true);
         const redirecting = `/jobs/${id}`;
-        console.log(redirecting);
         setRedirectTo(redirecting)
     }
 

@@ -17,14 +17,16 @@ function App() {
             <Route exact path="/jobs">
               <JobsList />
             </Route>
-            <Redirect from="/test" to="jobs" />
             <Route path="/jobs/:id">
               <JobDetails />
             </Route>
             <Route path="/candidates">
               <Candidates />
             </Route>
-            <Route path="/post-a-job">
+            <Route exact path="/post-a-job">
+              <PostAJob />
+            </Route>
+            <Route path="/post-a-job/:id">
               <PostAJob />
             </Route>
             <Route path="/">
