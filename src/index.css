@@ -13,3 +13,15 @@ h1, h2, h3, h4, h5, h6 {
 .job-list-item {
     margin-bottom: 30px;
 }
+
+.logo {
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 45px;
+    color: #b070a5;
+    text-decoration: none;
+   
+}
+.logo:hover {
+    text-decoration: none;
+}

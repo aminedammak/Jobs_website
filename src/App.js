@@ -3,7 +3,7 @@ import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import JobsList from './components/JobsList';
 import JobDetails from './components/JobDetails';
-import Candidates from './components/Candidates';
+import Candidates from './components/CandidatesList';
 import { Container } from 'react-bootstrap';
 import PostAJob from './components/PostAJob';
 
