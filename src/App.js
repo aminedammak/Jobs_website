@@ -6,6 +6,7 @@ import JobDetails from './components/JobDetails';
 import Candidates from './components/CandidatesList';
 import { Container } from 'react-bootstrap';
 import PostAJob from './components/PostAJob';
+import SubmitResume from './components/SubmitResume';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path="/post-a-job/:id">
               <PostAJob />
+            </Route>
+            <Route path="/submit-resume">
+              <SubmitResume />
             </Route>
             <Route path="/">
               <div><h2>Home Page</h2></div>

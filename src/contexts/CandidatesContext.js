@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-
+import React, { useReducer } from 'react';
+import candidatesReducer from '../reducers/candidatesReducer';
 export const CandidatesContext = React.createContext();
 
 const CandidatesContextProvider = function (props) {
 
-    const [candidates, setCandidates] = useState([]);
+    const [candidates, dispatch] = useReducer(candidatesReducer, []);
 
     return (
         <CandidatesContext.Provider value={{
-            candidates: candidates
+            candidates: candidates,
+            dispatch
         }}>
             {props.children}
         </CandidatesContext.Provider>
