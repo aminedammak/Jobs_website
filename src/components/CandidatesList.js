@@ -11,6 +11,11 @@ export default function CandidatesList() {
     return (
         <div>
             <h2>List of candidates {candidates.length}</h2>
+            <ul>
+                {candidates.map(candidate=> {
+                    return (<li key={candidate.id}>{candidate.firstName} {candidate.lastName}</li>)
+                })}
+            </ul>
         </div>
     )
 }

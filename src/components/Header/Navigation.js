@@ -16,9 +16,11 @@ export default function Navigation() {
                         <NavDropdown.Item as="span"><Link to="/submit-resume">Submit Resume</Link></NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="For employers" id="basic-nav-dropdown-2">
-                        <NavDropdown.Item as="span"><Link to="/candidates">Browse candidates</Link></NavDropdown.Item>
                         <NavDropdown.Item as="span"><Link to="/post-a-job">Post a job</Link></NavDropdown.Item>
                         <NavDropdown.Item as="span">Employer dashboard</NavDropdown.Item>
+                    </NavDropdown>
+                    <NavDropdown title="For administrator" id="basic-nav-dropdown-3">
+                        <NavDropdown.Item as="span"><Link to="/candidates">Browse candidates</Link></NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
                 <div className="logging-btn">
