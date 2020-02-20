@@ -3,7 +3,7 @@ import { CandidatesContext } from '../contexts/CandidatesContext';
 import uuid from 'uuid';
 import { Form } from "./style";
 import { Button } from 'react-bootstrap';
-
+import {Redirect} from 'react-router-dom';
 
 export default function SubmitResume() {
 
@@ -11,6 +11,7 @@ export default function SubmitResume() {
     const { dispatch } = useContext(CandidatesContext);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [resumeSubmitSuccess, setResumeSubmitSuccess] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,9 +22,12 @@ export default function SubmitResume() {
         }
 
         dispatch({ type: "ADD_CANDIDATE", candidate: candidate });
+        setResumeSubmitSuccess(true)
     }
 
-    return (
+    return resumeSubmitSuccess ? (
+        <Redirect to="/jobs" />
+        ):(
         <div>
             <Form onSubmit={handleSubmit}>
                 <div className="form-group">
