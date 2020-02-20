@@ -11,7 +11,7 @@ export default function PostAJob(props) {
 
     let { id } = useParams();
     const editId = id;
-    const jobToEdit = getJob(editId);
+    const jobToEdit = editId ? getJob(editId) : null;
 
     const [newId, setNewId] = useState(jobToEdit ? jobToEdit.id : '');
     const [title, setTitle] = useState(jobToEdit ? jobToEdit.title : '');
@@ -33,7 +33,9 @@ export default function PostAJob(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const id = jobToEdit ? jobToEdit.id : uuid;
+        const id = jobToEdit ? jobToEdit.id : uuid();
+        
+        
         setNewId(id);
         const job = { id: id, title, location, region, type, categories, tags, description, applicationEmail, minRate, maxRate, minSalary, maxSalary, companyId };
         if (jobToEdit) {
